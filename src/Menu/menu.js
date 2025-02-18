@@ -68,7 +68,6 @@ const StartMenu = async () => {
         '1 min',
         '5 min',
         '10 min',
-        '30 min',
         '15 min',
         '20 min',
         '30 min',
@@ -111,11 +110,11 @@ const StartMenu = async () => {
     endpointInput: endpointInput?.endpoint_input || 'No required',
     timeInput: timeInput.time_input,
     jsonChoice: jsonInput.json_input,
-    jsonPath: jsonPath.json_path
+    jsonPath: jsonPath?.json_path || 'No required'
   })
 }
 
-// Create the instructions component
+// TODO: Create the instructions component
 
 export {
   MainMenu,
