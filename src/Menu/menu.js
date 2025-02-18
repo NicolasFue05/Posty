@@ -13,6 +13,7 @@ const MainMenu = async () => {
       choices: [
         'Start', 
         'Use Instructions',
+        'Settings',
         'Exit'
       ]
     }
@@ -26,6 +27,7 @@ const StartMenu = async () => {
   console.log(ASCIITitle())
 
   // URL input
+  // Check if there a URL storage in the .txt file, if true use that URL, if not ask for the URL
   const inputAnswers = await inquirer.prompt([
     {
       type: 'input',
@@ -59,25 +61,6 @@ const StartMenu = async () => {
     ])
   } 
 
-  const timeInput = await inquirer.prompt([
-    {
-      type: 'list',
-      name: 'time_input',
-      message: 'Set the time between each requests',
-      choices: [
-        '1 min',
-        '5 min',
-        '10 min',
-        '15 min',
-        '20 min',
-        '30 min',
-        '60 min',
-        '90 min',
-        '120 min',
-        '150 min'
-      ]
-    }
-  ])
 
   const jsonInput = await inquirer.prompt([
     {
@@ -108,7 +91,6 @@ const StartMenu = async () => {
     url: inputAnswers.start_input,
     endpoint: endpointAnswer.endpoint_select,
     endpointInput: endpointInput?.endpoint_input || 'No required',
-    timeInput: timeInput.time_input,
     jsonChoice: jsonInput.json_input,
     jsonPath: jsonPath?.json_path || 'No required'
   })
