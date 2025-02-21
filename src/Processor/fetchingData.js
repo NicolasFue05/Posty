@@ -2,7 +2,7 @@
 
 
 // Each minute, ask for the new endpoint, if theres no endpoint, send request in the same URL
-async function fetchData(URL, endpoint = '', jsonPath = '') {
+async function fetchData(URL, endpoint = '') {
 
   try {
     const response = await fetch(`${URL}${endpoint}`)
@@ -13,6 +13,7 @@ async function fetchData(URL, endpoint = '', jsonPath = '') {
 
     const data = await response.json()
     console.log('✔ Data fetched correctly')
+  
     return data
 
   } catch (e) {
