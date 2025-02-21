@@ -62,7 +62,7 @@ const StartMenu = async () => {
   } 
 
 
-  const jsonInput = await inquirer.prompt([
+  const jsonChoice = await inquirer.prompt([
     {
       type: 'list',
       name: 'json_input',
@@ -73,16 +73,15 @@ const StartMenu = async () => {
       ]
     }
   ])
-
-  
+  // if user want to create a local json file, ask for a path or create one in the Data folder
   let jsonPath = null
 
-  if (jsonInput.json_input === 'Give a path to the Json File') {
+  if (jsonChoice.json_input !== 'Create a local Json File') {
     jsonPath = await inquirer.prompt([
       {
         type: 'input',
         name: 'json_path',
-        message: 'Put the path to the Json File',
+        message: 'Please write the path to the json file:',
       }
     ])
   }
@@ -90,8 +89,8 @@ const StartMenu = async () => {
   return ({
     url: inputAnswers.start_input,
     endpoint: endpointAnswer.endpoint_select,
-    endpointInput: endpointInput?.endpoint_input || 'No required',
-    jsonChoice: jsonInput.json_input,
+    endpointInput: endpointInput?.endpoint_input || '',
+    jsonChoice: jsonChoice.json_input,
     jsonPath: jsonPath?.json_path || 'No required'
   })
 }
