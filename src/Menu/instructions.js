@@ -3,18 +3,26 @@ import ASCIITitle from './title.js'
 export default function Instructions() {
   console.clear()
   console.log(ASCIITitle()) // Displays ASCII title
-  console.log('-------------------------------------------------------------------------------------')
+  console.log(
+    '-------------------------------------------------------------------------------------',
+  )
   console.log('⚙️  INSTRUCTIONS')
-  console.log('-------------------------------------------------------------------------------------\n')
+  console.log(
+    '-------------------------------------------------------------------------------------\n',
+  )
 
   console.log('💡 First of all:')
   console.log('   - You can save a **current JSON path** in the settings menu.')
   console.log('   - You can also save a **current API URL** with its endpoint.')
-  console.log('\n------------------------------------------------------------------------------------\n')
+  console.log(
+    '\n------------------------------------------------------------------------------------\n',
+  )
 
   console.log('🔹 **HOW TO START**')
   console.log('   [1] Start the program by selecting the **"Start"** option.')
-  console.log('\n------------------------------------------------------------------------------------\n')
+  console.log(
+    '\n------------------------------------------------------------------------------------\n',
+  )
 
   console.log('🔹 **PROGRAM REQUIREMENTS**')
   console.log('   When starting, the program will ask for the following:\n')
@@ -47,16 +55,22 @@ export default function Instructions() {
     '      - The program will ask you to enter the full path to the JSON file.\n',
   )
 
-  console.log('\n------------------------------------------------------------------------------------\n')
+  console.log(
+    '\n------------------------------------------------------------------------------------\n',
+  )
   console.log('🔹 **SETTINGS MENU OPTIONS**')
   console.log(
     '   - Save a **default JSON file path** (stored in `jsonPath.txt`).',
   )
   console.log('   - Save a **default API URL** (stored in `api.txt`).')
-  console.log('\n------------------------------------------------------------------------------------\n')
+  console.log(
+    '\n------------------------------------------------------------------------------------\n',
+  )
 
   console.log('🎯 Follow these steps to configure your program correctly!')
-  console.log('\n------------------------------------------------------------------------------------\n')
+  console.log(
+    '\n------------------------------------------------------------------------------------\n',
+  )
 }
 
 Instructions()
