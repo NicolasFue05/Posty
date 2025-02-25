@@ -2,6 +2,7 @@ import inquirer from 'inquirer'
 import ASCIITitle from './title.js'
 import process from 'node:process'
 import { saveJsonPath, checkJsonPath } from '../Processor/paths.js'
+import Instructions from './instructions.js'
 
 const MainMenu = async () => {
   console.clear()
@@ -30,7 +31,7 @@ const StartMenu = async () => {
     {
       type: 'input',
       name: 'start_input',
-      message: 'Set URL',
+      message: 'Set API URL',
     },
   ])
 
@@ -122,7 +123,7 @@ const SettingsMenu = async () => {
   }
 
   if (answers.config_menu === 'Instructions') {
-    console.log('INSTRUCTIONS!!')
+    Instructions()
   }
 }
 
