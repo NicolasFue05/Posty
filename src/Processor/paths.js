@@ -1,22 +1,32 @@
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
 
-const TEXT_PATH = path.resolve('Data')
+const TEXT_PATH = path.resolve('data')
 const FILE_NAME = 'jsonPath.txt'
-const LOCAL_TEXT_PATH = path.join(TEXT_PATH, FILE_NAME)
+const API_FILE_NAME = 'api.txt'
+const JSON_LOCAL_TEXT_PATH = path.join(TEXT_PATH, FILE_NAME)
+const API_LOCAL_TEXT_PATH = path.join(TEXT_PATH, API_FILE_NAME)
 
-export function saveJsonPath(data) {
+// Change name to savePath
+export async function savePath(isJson = true, data) {
   try {
-    fs.writeFile(LOCAL_TEXT_PATH, data, 'utf-8')
+    const filePath = isJson ? JSON_LOCAL_TEXT_PATH : API_LOCAL_TEXT_PATH
+    await fs.writeFile(filePath, data, 'utf-8') // ✅ Awaiting the write operation
     console.log('✔ Path saved Successfully!')
   } catch (e) {
     console.error(`❌ ERROR: ${e.message}`)
   }
 }
 
-export async function checkJsonPath() {
+// Change name to chackPath
+export async function checkPath(isJson = true) {
   try {
-    const data = await fs.readFile(LOCAL_TEXT_PATH, 'utf-8')
+    let data = ''
+    if (isJson) {
+      data = await fs.readFile(JSON_LOCAL_TEXT_PATH, 'utf-8')
+    } else {
+      data = await fs.readFile(API_LOCAL_TEXT_PATH, 'utf-8')
+    }
 
     if (data.trim() === '') {
       return null
@@ -25,10 +35,10 @@ export async function checkJsonPath() {
     const firstLine = data.split('\n')[0].trim()
 
     if (firstLine === '') {
-      console.log('❌ NO JSON PATH SAVED')
+      console.log('❌ NO PATH SAVED')
       return null
     } else {
-      console.log('📦 Saved Json Path:', firstLine)
+      // console.log('📦 Saved Path:', firstLine)
       return firstLine
     }
   } catch (err) {
