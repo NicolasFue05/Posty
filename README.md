@@ -76,4 +76,5 @@ When starting, the program will ask for the following:
 This project is licensed under the MIT License.
 
 🎯 Follow these steps to configure your program correctly and start fetching API data efficiently!
-Created with love by: [NicolasFue05](https://github.com/NicolasFue05)
+
+### Created with love by: [NicolasFue05](https://github.com/NicolasFue05)
