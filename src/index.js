@@ -2,7 +2,7 @@ import { MainMenu, SettingsMenu, StartMenu } from './Menu/menu.js'
 import { exitMessage } from './Menu/title.js'
 import fetchData from './Processor/fetchingData.js'
 import { addData, createLocalJson } from './Processor/jsonFile.js'
-import { checkJsonPath } from './Processor/paths.js'
+import { checkPath } from './Processor/paths.js'
 
 async function run() {
   try {
@@ -28,7 +28,7 @@ async function run() {
       } else if (startMenuResult.jsonChoice === 'Give a path to the Json File') {
         addData(startMenuResult.jsonPath, data)
       } else {
-        const jsonPath = await checkJsonPath()
+        const jsonPath = await checkPath()
         addData(jsonPath, data)
       }
 
