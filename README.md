@@ -1,5 +1,10 @@
-# POSTY
-// POSTY IMAGE HERE OR ASCCI TITLE
+    ██████╗  ██████╗ ███████╗████████╗██╗   ██╗
+    ██╔══██╗██╔═══██╗██╔════╝╚══██╔══╝╚██╗ ██╔╝
+    ██████╔╝██║   ██║███████╗   ██║    ╚████╔╝ 
+    ██╔═══╝ ██║   ██║╚════██║   ██║     ╚██╔╝  
+    ██║     ╚██████╔╝███████║   ██║      ██║   
+    ╚═╝      ╚═════╝ ╚══════╝   ╚═╝      ╚═╝  
+
 Posty is a terminal application designed to fetch data from an API and store it in a JSON file.
 
 ## 📌 Features
@@ -55,7 +60,9 @@ When starting, the program will ask for the following:
 - Save a **default API URL (stored in ```api.txt```)
 
 ## 🚀 Usage Example
-// Image here  
+
+![image](https://github.com/user-attachments/assets/5c93800a-0e92-4dbb-94f9-15c8d0c8795e)
+
 1. **Start Posty** and enter the required API details.
 2. **Fetch Data** from the API.
 3. **Store the results** in the specified JSON file.
@@ -69,3 +76,4 @@ When starting, the program will ask for the following:
 This project is licensed under the MIT License.
 
 🎯 Follow these steps to configure your program correctly and start fetching API data efficiently!
+Created with love by: [NicolasFue05](https://github.com/NicolasFue05)
