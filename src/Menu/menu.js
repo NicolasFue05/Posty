@@ -1,7 +1,7 @@
 import inquirer from 'inquirer'
 import ASCIITitle from './title.js'
 import process from 'node:process'
-import { saveJsonPath, checkJsonPath } from '../Processor/paths.js'
+import { savePath, checkPath } from '../Processor/paths.js'
 import Instructions from './instructions.js'
 
 const MainMenu = async () => {
@@ -27,13 +27,29 @@ const StartMenu = async () => {
 
   // URL input
   // Check if there a URL storage in the .txt file, if true use that URL, if not ask for the URL
-  const inputAnswers = await inquirer.prompt([
+  const apiOption = await inquirer.prompt([
     {
-      type: 'input',
-      name: 'start_input',
-      message: 'Set API URL',
-    },
+      type: 'list',
+      name: 'api_url_option',
+      message: 'API URL',
+      choices: ['Set API Url', 'Use current Api Url']
+    }
   ])
+
+  let apiURL = null
+  if (apiOption.api_url_option === 'Set API Url') {
+    const response = await inquirer.prompt([
+      {
+        type: 'input',
+        name: 'api_url',
+        message: 'Set API URL',
+      },
+    ])
+    apiURL = response.api_url
+  } else {
+    apiURL = await checkPath(false)
+    console.log(apiURL)
+  }
 
   // Endpoint Select
   const endpointAnswer = await inquirer.prompt([
@@ -56,7 +72,7 @@ const StartMenu = async () => {
       },
     ])
   }
-  // add the checkJsonPath function
+  // add the checkPath function
   // if chechJsonPath is null show the normal prompt, if it not, show the select saved json and return the firstline of the saved txt
   const jsonChoice = await inquirer.prompt([
     {
@@ -82,11 +98,11 @@ const StartMenu = async () => {
       },
     ])
   } else if (jsonChoice.json_input === 'Use Saved Json Path') {
-    jsonPath = await checkJsonPath()
+    jsonPath = await checkPath()
   }
 
   return {
-    url: inputAnswers.start_input,
+    url: apiURL,
     endpoint: endpointAnswer.endpoint_select,
     endpointInput: endpointInput?.endpoint_input || '',
     jsonChoice: jsonChoice.json_input,
@@ -104,11 +120,12 @@ const SettingsMenu = async () => {
       type: 'list',
       name: 'config_menu',
       message: 'SETTINGS',
-      choices: ['Save Current Json Path', 'Instructions'],
+      choices: ['Save Current Json Path', 'Save Current API Url','Instructions'],
     },
   ])
 
   let jsonPath = null
+  let APIPath = null
   if (answers.config_menu === 'Save Current Json Path') {
     jsonPath = await inquirer.prompt([
       {
@@ -119,8 +136,21 @@ const SettingsMenu = async () => {
       },
     ])
 
-    saveJsonPath(String(jsonPath.json_path))
+    savePath(true, String(jsonPath.json_path))
+  } else if(answers.config_menu === 'Save Current API Url') {
+    APIPath = await inquirer.prompt([
+      {
+        type: 'input',
+        name: 'api_path',
+        message: 'Set the current API Url:'
+      }
+    ])
+    savePath(false, String(APIPath.api_path))
   }
+
+  // if option is Save current API URL
+  // Save APIURL
+  // saveURL(String(apiURL.api_url))
 
   if (answers.config_menu === 'Instructions') {
     Instructions()
