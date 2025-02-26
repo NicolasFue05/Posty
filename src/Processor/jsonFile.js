@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 
-const DATA_PATH = path.resolve('Data')
+const DATA_PATH = path.resolve('data')
 const FILE_NAME = 'data.json'
 const LOCAL_FILE_PATH = path.join(DATA_PATH, FILE_NAME)
 
